@@ -3,7 +3,7 @@ name: Bootstrap v2.4.0 source
 on:
   push:
     paths:
-      - '.bootstrap_v240/READY'
+      - '.bootstrap/READY'
 
 permissions:
   contents: write
@@ -19,7 +19,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          cat .bootstrap_v240/part* | base64 --decode > /tmp/etd-v240.tar.gz
+          cat .bootstrap/part* | base64 --decode > /tmp/etd-v240.tar.gz
           tar -xzf /tmp/etd-v240.tar.gz -C .
           rm -rf .bootstrap .bootstrap_v240
           rm -f .github/workflows/bootstrap-v240.yml
